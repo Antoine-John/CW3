@@ -1,0 +1,6 @@
+public enum Status {
+RENTEDOUT,
+AVAILABLE,
+WITHPARTNER,
+INDELIVERY
+}
