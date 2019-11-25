@@ -5,6 +5,11 @@ public class DateRange {
 	private Date startDate;
 	private Date endDate;
 
+	public DateRange(Date start, Date end) {
+		startDate = start;
+		endDate = end;
+	}
+
 	public Date getStart() {
 		return this.startDate;
 	}
@@ -27,5 +32,12 @@ public class DateRange {
 			return true;
 		}
 		return false;
+	}
+
+	public DateRange ExpandRange(DateRange oldRange) {
+		Date newStart = (oldRange.getStart().getTime() - TimeUnit.DAYS.convert(3, TimeUnit.DAYS));
+		Date newEnd = oldRange.getEnd();
+		DateRange newRange = new DateRange(newStart, newEnd);
+		return newRange;
 	}
 }

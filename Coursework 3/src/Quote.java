@@ -5,4 +5,11 @@ public class Quote {
 	DateRange rentalPeriod;
 	BigDecimal totalCost;
 	BigDecimal totalDeposit;
+	
+	public Quote(Bike currentbike, DateRange daterange) {
+		bike = currentbike;
+		rentalPeriod = daterange;
+		totalCost = bike.dailyRentalRate.multiply(new BigDecimal(daterange.getDuration()));
+		totalDeposit = null;
+	}
 }
