@@ -8,8 +8,8 @@ public class BikeProvider {
 	private Location address;
 	Collection<BikeProvider> partners;
 	BigDecimal depositRate;
-	String password;
-	
+	private String password;
+
 	public Location getAddress() {
 		return this.address;
 	}

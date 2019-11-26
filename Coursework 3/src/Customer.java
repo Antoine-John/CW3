@@ -63,6 +63,7 @@ public class Customer {
 		Booking newBooking = new Booking(this, iter.next().getBike().getProvider(), cart, collect, bookingDate);
 		this.activeBookings.add(newBooking);
 		newBooking.sendToProvider();
+
 		//need to notify provider
 		if (collect) {
 			//BikeDeliverable deliverable = new BikeDeliverable(newBooking);
