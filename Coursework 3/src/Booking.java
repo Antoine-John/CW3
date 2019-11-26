@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public class Booking {
-	int bookingid;
+	Integer bookingid;
 	Customer customer;
 	private BikeProvider provider;
 	private Collection<Quote> quotes;
