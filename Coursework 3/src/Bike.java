@@ -11,7 +11,16 @@ public class Bike {
 	private BikeProvider provider;
 	private Collection<DateRange> rentPeriods;
 	private Status status;
-	private BigDecimal replacementValue;
+	
+	public Bike(BikeType type, String model, Size size, BigDecimal dailyRentalRate, BikeProvider provider) {
+		this.type = type;
+		this.model = model;
+		this.size = size;
+		this.dailyRentalRate = dailyRentalRate;
+		this.provider = provider;
+		this.rentPeriods = null;
+		this.status = status.AVAILABLE;
+	}
 	
 	public BikeProvider getProvider() {
 		return this.provider;
