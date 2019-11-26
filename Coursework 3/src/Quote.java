@@ -1,7 +1,7 @@
 import java.math.BigDecimal;
 
 public class Quote {
-	Bike bike;
+	private Bike bike;
 	DateRange rentalPeriod;
 	BigDecimal totalCost;
 	BigDecimal totalDeposit;
@@ -9,7 +9,11 @@ public class Quote {
 	public Quote(Bike currentbike, DateRange daterange) {
 		bike = currentbike;
 		rentalPeriod = daterange;
-		totalCost = bike.dailyRentalRate.multiply(new BigDecimal(daterange.getDuration()));
+		totalCost = bike.getDailyRentalRate().multiply(new BigDecimal(daterange.getDuration()));
 		totalDeposit = null;
+	}
+	
+	public Bike getBike() {
+		return this.bike;
 	}
 }

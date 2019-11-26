@@ -1,43 +1,41 @@
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class DateRange {
-	private Date startDate;
-	private Date endDate;
+	private LocalDate startDate;
+	private LocalDate endDate;
 
-	public DateRange(Date start, Date end) {
-		startDate = start;
-		endDate = end;
+	public DateRange (LocalDate startDate, LocalDate endDate) {
+		this.startDate = startDate;
+		this.endDate = endDate;
 	}
-
-	public Date getStart() {
+	
+	public LocalDate getStart() {
 		return this.startDate;
 	}
 
-	public Date getEnd() {
+	public LocalDate getEnd() {
 		return this.endDate;
 	}
 
 	public int getDuration() {
-		long durationInMillis = Math.abs(endDate.getTime() - startDate.getTime());
-		int duration = (int) TimeUnit.DAYS.convert(durationInMillis, TimeUnit.MILLISECONDS);
-		return duration;
+		return (int) ChronoUnit.DAYS.between(startDate, endDate);
 	}
 
 	public boolean overlaps(DateRange date) {
-		if (Math.abs(this.startDate.getTime() - date.getEnd().getTime()) <= 0) {
+		if (ChronoUnit.DAYS.between(date.getEnd(), this.startDate) <= 0) {
 			return true;
 		}
-		if (Math.abs(date.getStart().getTime() - this.endDate.getTime()) <= 0) {
+		if (ChronoUnit.DAYS.between(this.endDate, date.getStart()) <= 0) {
 			return true;
 		}
 		return false;
 	}
-
+	
 	public DateRange ExpandRange(DateRange oldRange) {
-		Date newStart = (oldRange.getStart().getTime() - TimeUnit.DAYS.convert(3, TimeUnit.DAYS));
-		Date newEnd = oldRange.getEnd();
-		DateRange newRange = new DateRange(newStart, newEnd);
-		return newRange;
+		LocalDate newStart = oldRange.getStart().minusDays(3);
+		LocalDate newEnd = oldRange.getStart().plusDays(3);
+		DateRange expandedDateRange = new DateRange(newStart, newEnd);
+		return expandedDateRange;
 	}
 }

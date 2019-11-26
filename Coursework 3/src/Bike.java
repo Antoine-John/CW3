@@ -4,16 +4,28 @@ import java.util.Iterator;
 
 public class Bike {
 	
-	BikeType type;
-	String model;
-	Size size;
-	BigDecimal dailyRentalRate;
-	BikeProvider provider;
-	Collection<DateRange> rentPeriods;
-	Status status;
-	BigDecimal replacementValue;
+	private BikeType type;
+	private String model;
+	private Size size;
+	private BigDecimal dailyRentalRate;
+	private BikeProvider provider;
+	private Collection<DateRange> rentPeriods;
+	private Status status;
+	private BigDecimal replacementValue;
+	
+	public BikeProvider getProvider() {
+		return this.provider;
+	}
 	
 	public BigDecimal getPrice () {
+		return this.dailyRentalRate;
+	}
+	
+	public Size getSize() {
+		return this.size;
+	}
+	
+	public BigDecimal getDailyRentalRate() {
 		return this.dailyRentalRate;
 	}
 

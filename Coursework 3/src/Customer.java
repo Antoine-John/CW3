@@ -1,4 +1,7 @@
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 public class Customer {
 	
@@ -38,10 +41,31 @@ public class Customer {
 		Collection<Quote> searchResults = null;
 		for (int i = 0; i < allBikes.length; i++) {
 			Bike currentBike = allBikes[i];
-			if (location.IsNearTo(currentBike.provider.address) == true && size == currentBike.size && currentBike.dateClashCheck(daterange) == true && currentBike.typeMatches(types) == true) {
+			if (location.IsNearTo(currentBike.getProvider().address) == true && size == currentBike.getSize() && currentBike.dateClashCheck(daterange) == true && currentBike.typeMatches(types) == true) {
 				searchResults.add(new Quote(currentBike, daterange));
 			}
 		}
 		return searchResults;
+	}
+
+	public void AddQuoteToCart(Quote quote, int quantity) {
+		
+	}
+	
+	public void RemoveQuoteFromCart(int something) {
+		
+	}
+	
+	public void BookQuote(boolean collectType) {
+		Iterator<Quote> iter = cart.iterator();
+		LocalDate bookingDate = LocalDate.now();
+		Booking newBooking = new Booking(this, iter.next().getBike().getProvider(), cart, collectType, bookingDate);
+		this.activeBookings.add(newBooking);
+		//need to notify provider
+		if (collectType) {
+			//BikeDeliverable deliverable = new BikeDeliverable(newBooking);
+			
+		}
+		//empty the cart
 	}
 }
