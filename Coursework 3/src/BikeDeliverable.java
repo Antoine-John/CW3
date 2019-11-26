@@ -13,7 +13,7 @@ public class BikeDeliverable implements Deliverable{
 		this.booking = booking;
 		
 		Collection<Bike> bikes = new ArrayList<Bike>();
-		Iterator<Quote> iter = booking.quotes.iterator();
+		Iterator<Quote> iter = booking.getQuotes().iterator();
 		while (iter.hasNext()) {
 			bikes.add(iter.next().getBike());
 		}

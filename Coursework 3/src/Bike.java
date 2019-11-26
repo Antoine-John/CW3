@@ -17,7 +17,7 @@ public class Bike {
 		return this.provider;
 	}
 	
-	public BigDecimal getPrice () {
+	public BigDecimal getPrice() {
 		return this.dailyRentalRate;
 	}
 	
