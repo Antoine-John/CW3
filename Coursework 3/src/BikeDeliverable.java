@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.*;
 
 public class BikeDeliverable implements Deliverable{
 	
@@ -12,10 +10,9 @@ public class BikeDeliverable implements Deliverable{
 		
 		this.booking = booking;
 		
-		Collection<Bike> bikes = new ArrayList<Bike>();
-		Iterator<Quote> iter = booking.getQuotes().iterator();
-		while (iter.hasNext()) {
-			bikes.add(iter.next().getBike());
+		HashMap<String, Bike> bikes = new HashMap<String, Bike>();
+		for (Map.Entry<String,Quote> entry: booking.getQuotes().entrySet()) {
+			bikes.put(entry.getKey(), entry.getValue().getBike());
 		}
 	}
 	

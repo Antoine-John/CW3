@@ -17,6 +17,12 @@ public class MockSystem implements System{
     public MockSystem() {
          //Create bunch of stuff here
         //Add provider
+        this.BikeIDCounter = 0;
+        this.bikes = new HashMap<String,Bike>();
+        this.providers = new HashMap<Location, BikeProvider>();
+        this.customers = new HashMap<String, Customer>();
+        this.bookings = new HashMap<Integer, Booking>();
+        /*
         BikeProvider o_provider = new BikeProvider("Al's Bike Rental Shop", new Location("EH9 3BP", "53 Forresthill Avenue"), "password");
         BikeProvider p_provider = new BikeProvider("Capone's Bikes For Rent", new Location("EH10 2WM", "7 Roseburn Terrace"), "password");
         this.addProvider(o_provider);
@@ -34,6 +40,7 @@ public class MockSystem implements System{
         this.addBike(bike3);
         this.addBike(bike4);
         this.addBike(bike5);
+         */
     }
 
 
@@ -50,6 +57,8 @@ public class MockSystem implements System{
     public void addBooking(Booking booking) {
         this.bookings.put(BookingIDCounter++, booking);
     }
+
+    public void addCustomer(Customer customer) { customers.put(customer.getEmail(), customer); }
 
     public HashMap<String, Bike> getBikes() {
         return this.bikes;

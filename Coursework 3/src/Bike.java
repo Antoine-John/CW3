@@ -1,7 +1,6 @@
 import java.math.BigDecimal;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Iterator;
+import java.util.*;
+import java.lang.System;
 
 public class Bike {
 	
@@ -19,7 +18,7 @@ public class Bike {
 		this.size = size;
 		this.dailyRentalRate = dailyRentalRate;
 		this.provider = provider;
-		this.rentPeriods = null;
+		this.rentPeriods = new ArrayList<DateRange>();
 		this.status = status.AVAILABLE;
 	}
 	
@@ -38,6 +37,8 @@ public class Bike {
 	public BigDecimal getDailyRentalRate() {
 		return this.dailyRentalRate;
 	}
+
+	public BikeType getBikeType() { return this.type; }
 
 	public void setPrice (BigDecimal price) {
 		this.dailyRentalRate = price;
@@ -90,6 +91,19 @@ public class Bike {
 				break;
 			}
 		}
+	}
+	@Override
+	public boolean equals (Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Bike bike = (Bike) o;
+		return  this.getBikeType().equals(bike.getBikeType()) &&
+				this.getSize().equals(bike.getSize()) &&
+				this.getProvider().equals(bike.getProvider());
 	}
 	
 } 	
