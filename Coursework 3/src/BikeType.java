@@ -7,7 +7,7 @@ public class BikeType {
 	static String types[] = {"Road", "Mountain", "Hybrid", "BMX", "Other"};
 	static BigDecimal replacementValues[] = {null, null, null, null, null};
 	
-	BikeType(int n){
+	public BikeType(int n){
 		this.type = types[n];
 		this.replacementValue = replacementValues[n];
 	}
