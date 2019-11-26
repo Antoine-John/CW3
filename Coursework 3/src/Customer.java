@@ -1,17 +1,17 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.*;
 
 public class Customer {
-	
-	String name;
-	String contactNumber;
-	String emailAddress;
-	Location address;
-	String password;
-	Collection<Booking> activeBookings;
-	Collection<Quote> cart;
+
+	private String name;
+	private String contactNumber;
+	private String emailAddress;
+	private Location address;
+	private String password;
+	private Collection<Booking> activeBookings;
+	private Cart cart = new Cart();
+
+	MockSystem system = new MockSystem();
 	
 	public Customer(String name, String contactNumber, String emailAddress, Location address, String password) {
 		this.name = name;
@@ -21,13 +21,13 @@ public class Customer {
 		this.password = password;
 	}
 
-	void UpdateAddress(String postcode, String addrLn) {
-		this.address = new Location(postcode, addrLn);
+	void UpdateAddress(String postcode, String address) {
+		this.address = new Location(postcode, address);
 	}
 	
-	Collection<Quote> RequestQuotes(DateRange daterange, Location location, boolean[] types, Size size) {
-		Collection<Quote> searchResults = null;
-		Bike[] allBikes = null;
+	HashMap<String, Quote> RequestQuotes(DateRange daterange, Location location, boolean[] types, Size size) {
+		HashMap<String, Quote> searchResults = null;
+		HashMap<String, Bike> allBikes = system.getBikes();
 
 		searchResults = SearchQuotes(allBikes, daterange, location, types, size);
 		if (searchResults.size() == 0) {
@@ -37,12 +37,12 @@ public class Customer {
 		return searchResults;
 	}
 	
-	Collection<Quote> SearchQuotes(Bike[] allBikes, DateRange daterange, Location location, boolean[] types, Size size){
-		Collection<Quote> searchResults = null;
-		for (int i = 0; i < allBikes.length; i++) {
-			Bike currentBike = allBikes[i];
-			if (location.IsNearTo(currentBike.getProvider().getAddress()) == true && size == currentBike.getSize() && currentBike.dateClashCheck(daterange) == true && currentBike.typeMatches(types) == true) {
-				searchResults.add(new Quote(currentBike, daterange));
+	HashMap<String, Quote> SearchQuotes(HashMap<String, Bike> allBikes, DateRange daterange, Location location, boolean[] types, Size size){
+		HashMap<String, Quote> searchResults = null;
+		for (Map.Entry<String, Bike> entry: allBikes.entrySet()) {
+			Bike currentBike = entry.getValue();
+			if (location.IsNearTo(currentBike.getProvider().getAddress()) && size == currentBike.getSize() && currentBike.dateClashCheck(daterange) && currentBike.typeMatches(types)) {
+				searchResults.put(entry.getKey(), new Quote(currentBike, daterange));
 			}
 		}
 		return searchResults;
@@ -58,11 +58,14 @@ public class Customer {
 	
 	public void BookQuote(boolean collect) {
 		//When a quote is booked you need to update the DateRange List in bikes
-		Iterator<Quote> iter = cart.iterator();
 		LocalDate bookingDate = LocalDate.now();
-		Booking newBooking = new Booking(this, iter.next().getBike().getProvider(), cart, collect, bookingDate);
+		Booking newBooking = new Booking(this, cart.getProvider(), cart.getContents(), collect, bookingDate);
 		this.activeBookings.add(newBooking);
+		system.addBooking(newBooking);
 		newBooking.sendToProvider();
+		for (Map.Entry<String, Quote> entry: cart.getContents().entrySet()) {
+			system.findBike(entry.getKey()).updateRentalPeriods(entry.getValue().getRentalPeriod());
+		}
 
 		//need to notify provider
 		if (collect) {

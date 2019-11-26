@@ -15,7 +15,7 @@ public class MockSystem implements System{
     private static Integer BookingIDCounter;
 
     public MockSystem() {
-        //Create bunch of stuff here
+         //Create bunch of stuff here
         //Add provider
         BikeProvider o_provider = new BikeProvider("Al's Bike Rental Shop", new Location("EH9 3BP", "53 Forresthill Avenue"), "password");
         BikeProvider p_provider = new BikeProvider("Capone's Bikes For Rent", new Location("EH10 2WM", "7 Roseburn Terrace"), "password");
@@ -48,9 +48,20 @@ public class MockSystem implements System{
     }
 
     public void addBooking(Booking booking) {
-        bookings.put(BookingIDCounter++, booking);
+        this.bookings.put(BookingIDCounter++, booking);
     }
 
+    public HashMap<String, Bike> getBikes() {
+        return this.bikes;
+    }
+
+    public Bike findBike(String ID) {
+        return bikes.get(ID);
+    }
+
+    public Booking findBooking(Integer ID) {
+        return bookings.get(ID);
+    }
 
     //creates unique id for bike when new bike is added
     static synchronized String createID() {

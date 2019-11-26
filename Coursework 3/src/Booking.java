@@ -1,18 +1,20 @@
 //import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 public class Booking {
 	Integer bookingid;
 	Customer customer;
 	private BikeProvider provider;
-	private Collection<Quote> quotes;
+	private HashMap<String,Quote> quotes;
 	boolean collectionType;
 	LocalDate bookingDate;
 	private State state;
 	
-	public Collection<Quote> getQuotes() {
+	public HashMap<String, Quote> getQuotes() {
 		return this.quotes;
 	}
 	
@@ -24,7 +26,7 @@ public class Booking {
 		return this.state;
 	}
 	
-	public Booking (Customer customer, BikeProvider provider, Collection<Quote> quotes, boolean collectionType, LocalDate bookingDate) {
+	public Booking (Customer customer, BikeProvider provider, HashMap<String,Quote> quotes, boolean collectionType, LocalDate bookingDate) {
 		//generate unique booking ID
 		this.customer = customer;
 		this.provider = provider;
@@ -35,8 +37,10 @@ public class Booking {
 	}
 
 	public LocalDate getCollectionDate() {
-		Iterator<Quote> iter = quotes.iterator();
-		return iter.next().getRentalPeriod().getStart();
+		for (Map.Entry<String, Quote> entry: quotes.entrySet()) {
+			return entry.getValue().getRentalPeriod().getStart();
+		}
+		return null;
 	}
 
 	public void sendToProvider() {
@@ -45,5 +49,9 @@ public class Booking {
 	
 	public void updateBookingState (State state) {
 		this.state = state;
+	}
+
+	public Integer getID() {
+		return this.bookingid;
 	}
 }

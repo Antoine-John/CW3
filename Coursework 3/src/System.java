@@ -8,5 +8,7 @@ public interface System {
 
     public void addBike(Bike bike);
     public void addProvider(BikeProvider provider);
+    public void addBooking(Booking booking);
 
+    HashMap<String,Bike> getBikes();
 }

@@ -1,5 +1,6 @@
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 
 public class Bike {
@@ -73,6 +74,22 @@ public class Bike {
 	
 	public void UpdateBikeStatus(Status newstatus) {
 		this.status = newstatus;
+	}
+
+	public void updateRentalPeriods(DateRange dateRange) {
+		rentPeriods.add(dateRange);
+	}
+
+	/*This function removes any rental periods that are not needed, either
+	* because the rental period has ended or the booking has been cancelled*/
+	public void removeRentalPeriods(DateRange dateRange) {
+		Iterator<DateRange> iter = rentPeriods.iterator();
+		while(iter.hasNext()) {
+			if (iter.equals(dateRange)) {
+				iter.remove();
+				break;
+			}
+		}
 	}
 	
 } 	
