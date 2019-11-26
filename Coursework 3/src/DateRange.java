@@ -24,17 +24,17 @@ public class DateRange {
 
 	public boolean overlaps(DateRange date) {
 		if (ChronoUnit.DAYS.between(date.getEnd(), this.startDate) <= 0) {
-			return true;
+			if (ChronoUnit.DAYS.between(this.endDate, date.getStart()) <= 0) {
+				return true;
+			}
 		}
-		if (ChronoUnit.DAYS.between(this.endDate, date.getStart()) <= 0) {
-			return true;
-		}
+
 		return false;
 	}
 	
-	public DateRange ExpandRange(DateRange oldRange) {
-		LocalDate newStart = oldRange.getStart().minusDays(3);
-		LocalDate newEnd = oldRange.getStart().plusDays(3);
+	public DateRange ExpandRange() {
+		LocalDate newStart = this.getStart().minusDays(3);
+		LocalDate newEnd = this.getEnd().plusDays(3);
 		DateRange expandedDateRange = new DateRange(newStart, newEnd);
 		return expandedDateRange;
 	}

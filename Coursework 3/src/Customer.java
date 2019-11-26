@@ -31,7 +31,7 @@ public class Customer {
 
 		searchResults = SearchQuotes(allBikes, daterange, location, types, size);
 		if (searchResults.size() == 0) {
-			searchResults = SearchQuotes(allBikes, daterange.ExpandRange(daterange), location, types, size);
+			searchResults = SearchQuotes(allBikes, daterange.ExpandRange(), location, types, size);
 		}
 		
 		return searchResults;
