@@ -57,17 +57,19 @@ public class Customer {
 	}
 	
 	public void BookQuote(boolean collect) {
+		//When a quote is booked you need to update the DateRange List in bikes
 		Iterator<Quote> iter = cart.iterator();
 		LocalDate bookingDate = LocalDate.now();
 		Booking newBooking = new Booking(this, iter.next().getBike().getProvider(), cart, collect, bookingDate);
 		this.activeBookings.add(newBooking);
+		newBooking.sendToProvider();
 		//need to notify provider
 		if (collect) {
 			//BikeDeliverable deliverable = new BikeDeliverable(newBooking);
 			DeliveryServiceFactory newFactory = new DeliveryServiceFactory();
 			DeliveryService newDelivery = newFactory.getDeliveryService();
 			Deliverable newDeliverable = new BikeDeliverable(newBooking);
-			newDelivery.scheduleDelivery(newDeliverable, newBooking.getProvider().getAddress(), address, bookingDate);
+			newDelivery.scheduleDelivery(newDeliverable, newBooking.getProvider().getAddress(), address, newBooking.getCollectionDate());
 			//Need to change booking date to actual pickup date not date of booking
 		}
 		//empty the cart

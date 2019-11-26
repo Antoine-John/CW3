@@ -1,6 +1,7 @@
 //import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Iterator;
 
 public class Booking {
 	int bookingid;
@@ -30,6 +31,16 @@ public class Booking {
 		this.quotes = quotes;
 		this.collectionType = collectionType;
 		this.bookingDate = bookingDate;
+		this.state = State.PENDING;
+	}
+
+	public LocalDate getCollectionDate() {
+		Iterator<Quote> iter = quotes.iterator();
+		return iter.next().getRentalPeriod().getStart();
+	}
+
+	public void sendToProvider() {
+		//System sends booking info to provider
 	}
 	
 	public void updateBookingState (State state) {
