@@ -12,7 +12,7 @@ public class Booking {
 	private HashMap<String,Quote> quotes;
 	boolean collectionType;
 	LocalDate bookingDate;
-	private State state;
+	public State state;
 	
 	public HashMap<String, Quote> getQuotes() {
 		return this.quotes;
