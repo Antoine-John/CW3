@@ -35,6 +35,8 @@ class SystemTests {
 
     private static HashMap<String, Quote> curr_search;
 
+    private static MultiDayDiscountPolicy pricePolicy;
+
     @BeforeAll
     static void oneTimeSetUp() {
 
@@ -43,24 +45,33 @@ class SystemTests {
         pProvider = new BikeProvider("Capone's Bikes For Rent", new Location("EH10 2WM", "7 Roseburn Terrace"), "password");
         uProvider = new BikeProvider("Smitty's Decrepit Hut ", new Location("EH16 5AY", "18 Holyrood Park Road"), "password");
 
+        pricePolicy = new MultiDayDiscountPolicy();
+        BikeType bikeType = new BikeType(1);
+        pricePolicy.setDailyRentalPrice(bikeType, new BigDecimal(10));
+        pProvider.setDailyRentalRates(bikeType);
+        bikeType = new BikeType(0);
+        pricePolicy.setDailyRentalPrice(bikeType, new BigDecimal(15));
+        pProvider.setDailyRentalRates(bikeType);
+
         oProvider.system.reset();
 
-        bike1 = new Bike(new BikeType(0), "Li'l Road Warrior", Size.XS, new BigDecimal(10), oProvider); //Id=0
-        bike2 = new Bike(new BikeType(1), "Mountain Mama", Size.L, new BigDecimal(30), pProvider); //Id = 1...
-        bike3 = new Bike(new BikeType(2), "AllTerrain Lad", Size.S, new BigDecimal(20), oProvider);
-        bike4 = new Bike(new BikeType(3), "BeeEmEx", Size.M, new BigDecimal(45), pProvider);
-        bike5 = new Bike(new BikeType(4), "Beefy Boy Unicycle", Size.XXL, new BigDecimal(15), oProvider);
-        bike6 = new Bike(new BikeType(0), "Li'l Road Warrior", Size.L, new BigDecimal(35), pProvider);
-        bike7 = new Bike(new BikeType(1), "HillBilly", Size.L, new BigDecimal(30), pProvider);
-        bike8 = new Bike(new BikeType(2), "AllTerrain Lad", Size.XXS, new BigDecimal(50), oProvider);
-        bike9 = new Bike(new BikeType(1), "BeeEmEx", Size.L, new BigDecimal(55), pProvider);
-        bike10 = new Bike(new BikeType(4), "Beefy Boy Unicycle", Size.M, new BigDecimal(5), oProvider);
+        bike1 = new Bike(new BikeType(0), "Li'l Road Warrior", Size.XS, oProvider); //Id=0
+        bike2 = new Bike(new BikeType(1), "Mountain Mama", Size.L, pProvider); //Id = 1...
+        bike3 = new Bike(new BikeType(2), "AllTerrain Lad", Size.S, oProvider);
+        bike4 = new Bike(new BikeType(3), "BeeEmEx", Size.M, pProvider);
+        bike5 = new Bike(new BikeType(4), "Beefy Boy Unicycle", Size.XXL, oProvider);
+        bike6 = new Bike(new BikeType(0), "Li'l Road Warrior", Size.L, pProvider);
+        bike7 = new Bike(new BikeType(1), "HillBilly", Size.L, pProvider);
+        bike8 = new Bike(new BikeType(2), "AllTerrain Lad", Size.XXS, oProvider);
+        bike9 = new Bike(new BikeType(1), "BeeEmEx", Size.L, pProvider);
+        bike10 = new Bike(new BikeType(4), "Beefy Boy Unicycle", Size.M, oProvider);
 
         customer = new Customer("John Doe",
                 "07293 987091",
                 "JohnDoe@yahoo.com",
                 new Location("EH8 4YU", "54 Brady Avenue"),
                 "Password");
+
         //provider system state
         oProvider.system.addProvider(oProvider);
         oProvider.system.addProvider(pProvider);
@@ -158,7 +169,7 @@ class SystemTests {
     void bookingCostTest() {
         //check that the cost of booking is correct
         System.out.println(customer.system.findBooking(0));
-        assertEquals(new BigDecimal(855), customer.system.findBooking(0).getTotalCost());
+        assertEquals(new BigDecimal(315), customer.system.findBooking(0).getTotalCost());
     }
 
     @Test

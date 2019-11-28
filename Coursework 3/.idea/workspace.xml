@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="591bf2b7-e8a3-4652-926b-57bc8e6ab74a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/META-INF/BikeRental.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.log" beforeDir="false" afterPath="$PROJECT_DIR$/output.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/Bike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/Bike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/MockSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/MockSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/BikeProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/BikeProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/BikeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/BikeType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/MultiDayDiscountPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/MultiDayDiscountPolicy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/PricingPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/PricingPolicy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/Quote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/Quote.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/uk/ac/ed/bikerental/SystemTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/uk/ac/ed/bikerental/SystemTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/uk/ac/ed/bikerental/TestBike.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/uk/ac/ed/bikerental/TestBike.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/uk/ac/ed/bikerental/TestCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/uk/ac/ed/bikerental/TestCustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/uk/ac/ed/bikerental/TestMultiDayDiscountPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/uk/ac/ed/bikerental/TestMultiDayDiscountPolicy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/uk/ac/ed/bikerental/TestQuote.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/uk/ac/ed/bikerental/TestQuote.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +54,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SystemTests">
+  <component name="RunManager" selected="JUnit.TestMultiDayDiscountPolicy">
     <configuration name="SystemTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BikeRental" />
       <extension name="coverage">
@@ -127,9 +132,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestMultiDayDiscountPolicy" />
         <item itemvalue="JUnit.SystemTests" />
         <item itemvalue="JUnit.TestQuote" />
-        <item itemvalue="JUnit.TestMultiDayDiscountPolicy" />
         <item itemvalue="JUnit.TestLocation" />
         <item itemvalue="JUnit.TestDateRange" />
       </list>

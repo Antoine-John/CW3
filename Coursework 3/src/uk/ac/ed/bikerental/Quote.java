@@ -14,7 +14,7 @@ public class Quote {
 	public Quote(Bike currentBike, DateRange daterange) {
 		bike = currentBike;
 		rentalPeriod = daterange;
-		totalCost = bike.getDailyRentalRate().multiply(new BigDecimal(daterange.getDuration()));
+		totalCost = bike.getBikeType().dailyRentalRate.multiply(new BigDecimal(daterange.getDuration()));
 		totalDeposit = null;
 	}
 

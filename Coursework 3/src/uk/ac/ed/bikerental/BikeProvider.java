@@ -12,6 +12,7 @@ public class BikeProvider {
 	private Collection<BikeProvider> partners;
 	BigDecimal depositRate;
 	private String password;
+	private HashMap<String, BigDecimal> dailyRentalRates;
 
 	//Provider constructor
 	public BikeProvider(String name, Location address, String password) {
@@ -19,6 +20,7 @@ public class BikeProvider {
 		this.address = address;
 		this.password = password;
 		this.partners = new ArrayList<BikeProvider>();
+		this. dailyRentalRates = new HashMap<String, BigDecimal>();
 	}
 
 	//MockSystem will be used for testing and will contain info on customers, booking etc
@@ -37,6 +39,13 @@ public class BikeProvider {
 
 	public void setDepositRate(BigDecimal depositRate) {
 		this.depositRate = depositRate;
+	}
+
+	public HashMap<String, BigDecimal> getDailyRentalRates() {
+		return this.dailyRentalRates;
+	}
+	public void setDailyRentalRates(BikeType type) {
+		this.dailyRentalRates.put(type.getType(), type.dailyRentalRate);
 	}
 
 	//methods

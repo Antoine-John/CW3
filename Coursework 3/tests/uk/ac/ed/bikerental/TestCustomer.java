@@ -40,16 +40,16 @@ class TestCustomer {
         oProvider = new BikeProvider("Al's Bike Rental Shop", new Location("EH9 3BP", "53 Forresthill Avenue"), "password");
         pProvider = new BikeProvider("Capone's Bikes For Rent", new Location("EH10 2WM", "7 Roseburn Terrace"), "password");
 
-        bike1 = new Bike(new BikeType(0), "Li'l Road Warrior", Size.XS, new BigDecimal(10), oProvider); //Id=0
-        bike2 = new Bike(new BikeType(1), "Mountain Mama", Size.L, new BigDecimal(39.95), pProvider); //Id = 1...
-        bike3 = new Bike(new BikeType(2), "AllTerrain Lad", Size.S, new BigDecimal(15.50), oProvider);
-        bike4 = new Bike(new BikeType(3), "BeeEmEx", Size.M, new BigDecimal(19.10), pProvider);
-        bike5 = new Bike(new BikeType(4), "Beefy Boy Unicycle", Size.XXL, new BigDecimal(49.86), oProvider);
-        bike6 = new Bike(new BikeType(0), "Li'l Road Warrior", Size.L, new BigDecimal(10), oProvider);
-        bike7 = new Bike(new BikeType(1), "HillBilly", Size.L, new BigDecimal(39.95), pProvider);
-        bike8 = new Bike(new BikeType(2), "AllTerrain Lad", Size.XXS, new BigDecimal(15.50), oProvider);
-        bike9 = new Bike(new BikeType(1), "BeeEmEx", Size.L, new BigDecimal(19.10), pProvider);
-        bike10 = new Bike(new BikeType(4), "Beefy Boy Unicycle", Size.M, new BigDecimal(49.86), oProvider);
+        bike1 = new Bike(new BikeType(0), "Li'l Road Warrior", Size.XS, oProvider); //Id=0
+        bike2 = new Bike(new BikeType(1), "Mountain Mama", Size.L, pProvider); //Id = 1...
+        bike3 = new Bike(new BikeType(2), "AllTerrain Lad", Size.S, oProvider);
+        bike4 = new Bike(new BikeType(3), "BeeEmEx", Size.M, pProvider);
+        bike5 = new Bike(new BikeType(4), "Beefy Boy Unicycle", Size.XXL, oProvider);
+        bike6 = new Bike(new BikeType(0), "Li'l Road Warrior", Size.L, oProvider);
+        bike7 = new Bike(new BikeType(1), "HillBilly", Size.L, pProvider);
+        bike8 = new Bike(new BikeType(2), "AllTerrain Lad", Size.XXS, oProvider);
+        bike9 = new Bike(new BikeType(1), "BeeEmEx", Size.L, pProvider);
+        bike10 = new Bike(new BikeType(4), "Beefy Boy Unicycle", Size.M, oProvider);
 
         customer = new Customer("John Doe",
                 "07293 987091",

@@ -10,17 +10,21 @@ public class Bike {
 	private BikeType type;
 	private String model;
 	private Size size;
-	private BigDecimal dailyRentalRate;
 	private BikeProvider provider;
 	private Collection<DateRange> rentPeriods;
 	private Status status;
 
 	//Bike constructor
-	public Bike(BikeType type, String model, Size size, BigDecimal dailyRentalRate, BikeProvider provider) {
+	public Bike(BikeType type, String model, Size size, BikeProvider provider) {
 		this.type = type;
 		this.model = model;
 		this.size = size;
-		this.dailyRentalRate = dailyRentalRate;
+		for (Map.Entry<String, BigDecimal> entry: provider.getDailyRentalRates().entrySet()){
+			if (entry.getKey() == this.type.getType()) {
+				this.type.dailyRentalRate = entry.getValue();
+				break;
+			}
+		}
 		this.provider = provider;
 		this.rentPeriods = new ArrayList<DateRange>();
 		this.status = status.AVAILABLE;
@@ -30,7 +34,7 @@ public class Bike {
 	public String toString() {
 		String returnString = "";
 		returnString += "\nBike Type: ";
-		returnString += this.type.type;
+		returnString += this.type.getType();
 		returnString += "\nModel: ";
 		returnString += model;
 		returnString += "\nProvider: ";
@@ -45,28 +49,17 @@ public class Bike {
 	}
 	
 	public BigDecimal getPrice() {
-		return this.dailyRentalRate;
+		return this.type.dailyRentalRate;
 	}
 	
 	public Size getSize() {
 		return this.size;
-	}
-	
-	public BigDecimal getDailyRentalRate() {
-		return this.dailyRentalRate;
-	}
-	public void setDailyRentalRate(BigDecimal dailyRentalRate) {
-		this.dailyRentalRate = dailyRentalRate;
 	}
 
 	public BikeType getBikeType() { return this.type; }
 
 	public Status getStatus() {
 		return this.status;
-	}
-
-	public void setPrice (BigDecimal price) {
-		this.dailyRentalRate = price;
 	}
 
 	public void UpdateBikeStatus(Status newstatus) {
@@ -91,7 +84,7 @@ public class Bike {
 	//Returns true if current bike type is among list of wanted types
 	public boolean typeMatches(boolean[] types) {
 		int toCheck;
-		switch (type.type) {
+		switch (type.getType()) {
 			case "Road": toCheck = 0;
 						break;
 			case "Mountain": toCheck = 1;

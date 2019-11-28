@@ -20,6 +20,7 @@ public class MultiDayDiscountPolicy implements PricingPolicy {
 			Bike curBike = bikesItr.next();
 			price = price.add(curBike.getPrice());
 		}
+		price = price.multiply(new BigDecimal(date.getDuration()));
 		//return x - x*y where x is the total price and y is the discount
 		//formats Big decimal to two decimal places
 		return (price.subtract(price.multiply(new BigDecimal(percentageDiscount)))).setScale(2, BigDecimal.ROUND_HALF_EVEN);
@@ -38,8 +39,8 @@ public class MultiDayDiscountPolicy implements PricingPolicy {
 		return this.discount[idx];
 	}
 
-	public void setDailyRentalPrice(Bike bike, BigDecimal price) {
-		bike.setDailyRentalRate(price);
+	public void setDailyRentalPrice(BikeType bikeType, BigDecimal price) {
+		bikeType.dailyRentalRate = price;
 	}
 
 	public void setDaysDiscount(int[] days, float[] discount) {

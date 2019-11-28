@@ -5,17 +5,32 @@ import java.lang.System;
 
 public class BikeType {
 	//BikeType attributes
-	String type;
+	private String type;
 	BigDecimal replacementValue;
+	BigDecimal dailyRentalRate;
 
 	//Defined set of bike types and associated replacement values
-	static String types[] = {"Road", "Mountain", "Hybrid", "BMX", "Other"};
-	static BigDecimal replacementValues[] = {new BigDecimal(10), new BigDecimal(10), new BigDecimal(10), new BigDecimal(10), new BigDecimal(10)};
+	private String types[] = {"Road", "Mountain", "Hybrid", "BMX", "Other"};
+	private BigDecimal replacementValues[] = {new BigDecimal(10), new BigDecimal(10), new BigDecimal(10), new BigDecimal(10), new BigDecimal(10)};
 
 	//Constructor
 	public BikeType(int n){
 		this.type = types[n];
 		this.replacementValue = replacementValues[n];
+		this.dailyRentalRate = new BigDecimal(0);
+	}
+
+	public BigDecimal getReplacementValue() {
+		return this.replacementValue;
+	}
+
+	//Return bike types
+	public String[] getTypes() {
+		return this.types;
+	}
+
+	public String getType() {
+		return this.type;
 	}
 
 	//Print BikeType

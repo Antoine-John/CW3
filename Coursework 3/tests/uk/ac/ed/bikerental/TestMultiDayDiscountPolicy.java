@@ -9,7 +9,6 @@ import java.util.Collection;
 
 class TestMultiDayDiscountPolicy {
 
-    private static MultiDayDiscountPolicy multDiscPol;
     private static int[] days;
     private static float[] discount;
     private static DateRange dateRange;
@@ -23,21 +22,31 @@ class TestMultiDayDiscountPolicy {
     private static Bike bike5;
 
     private static Collection<Bike> collection;
+    private static MultiDayDiscountPolicy pricePolicy;
 
     @BeforeAll
     static void oneTimeSetUp() {
-        multDiscPol = new MultiDayDiscountPolicy();
+        pProvider = new BikeProvider("Capone's Bikes For Rent", new Location("EH10 2WM", "7 Roseburn Terrace"), "password");
+
+        pricePolicy = new MultiDayDiscountPolicy();
+        BikeType bikeType = new BikeType(1);
+        pricePolicy.setDailyRentalPrice(bikeType, new BigDecimal(10));
+        pProvider.setDailyRentalRates(bikeType);
+        bikeType = new BikeType(0);
+        pricePolicy.setDailyRentalPrice(bikeType, new BigDecimal(15));
+        pProvider.setDailyRentalRates(bikeType);
+
         days = new int[]{1,3,7,14};
         discount = new float[]{0f, 0.05f, 0.1f, 0.15f};
-        multDiscPol.setDaysDiscount(days, discount);
+        pricePolicy.setDaysDiscount(days, discount);
         dateRange = new DateRange(LocalDate.of(2018, 1, 7),
                 LocalDate.of(2018, 1, 10));
 
-        bike1 = new Bike(new BikeType(0), "Li'l Road Warrior", Size.XS, new BigDecimal(10), pProvider); //Id=0
-        bike2 = new Bike(new BikeType(1), "Mountain Mama", Size.L, new BigDecimal(30), pProvider); //Id = 1...
-        bike3 = new Bike(new BikeType(2), "AllTerrain Lad", Size.S, new BigDecimal(20), pProvider);
-        bike4 = new Bike(new BikeType(3), "BeeEmEx", Size.M, new BigDecimal(45), pProvider);
-        bike5 = new Bike(new BikeType(4), "Beefy Boy Unicycle", Size.XXL, new BigDecimal(15), pProvider);
+        bike1 = new Bike(new BikeType(0), "Li'l Road Warrior", Size.XS, pProvider); //Id=0
+        bike2 = new Bike(new BikeType(1), "Mountain Mama", Size.L, pProvider); //Id = 1...
+        bike3 = new Bike(new BikeType(2), "AllTerrain Lad", Size.S, pProvider);
+        bike4 = new Bike(new BikeType(3), "BeeEmEx", Size.M, pProvider);
+        bike5 = new Bike(new BikeType(4), "Beefy Boy Unicycle", Size.XXL, pProvider);
         collection = new ArrayList<Bike>();
         collection.add(bike1);
         collection.add(bike2);
@@ -50,8 +59,9 @@ class TestMultiDayDiscountPolicy {
     void calculatePriceTest() {
         //Very basic test case for calculating price
         //checks known value against calculated value
-        BigDecimal test = multDiscPol.calculatePrice(collection, dateRange);
-        assertTrue(test.compareTo(new BigDecimal(114.00)) == 0);
+        BigDecimal test = pricePolicy.calculatePrice(collection, dateRange);
+        System.out.println(test);
+        assertTrue(test.compareTo(new BigDecimal(71.25)) == 0);
 
     }
 

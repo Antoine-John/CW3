@@ -1,3 +1,4 @@
+71.25
 10
 Current Key: 1
 Current Key: 5
@@ -10,27 +11,27 @@ All Quotes:
 Bike Type: Mountain
 Model: Mountain Mama
 Provider: Capone's Bikes For Rent
-Total Cost: 270
+Total Cost: 90
 -----------------------------------------
 
 -----------------------------------------
 Bike Type: Road
 Model: Li'l Road Warrior
 Provider: Capone's Bikes For Rent
-Total Cost: 315
+Total Cost: 135
 -----------------------------------------
 
 -----------------------------------------
 Bike Type: Mountain
 Model: HillBilly
 Provider: Capone's Bikes For Rent
-Total Cost: 270
+Total Cost: 90
 -----------------------------------------
 
 Collection Type: Customer Will Pick Up
 Date of Booking: 2019-11-28
 Booking State: PENDING
-Nov 28, 2019 1:38:50 PM uk.ac.ed.bikerental.BikeProvider registerReturnBooking
+Nov 28, 2019 5:51:44 PM uk.ac.ed.bikerental.BikeProvider registerReturnBooking
 WARNING: You are not authorised to update this booking.
 
 Thanks for using JUnit! Support its development at https://junit.org/sponsoring
@@ -73,7 +74,7 @@ Thanks for using JUnit! Support its development at https://junit.org/sponsoring
 │     └─ invalidBikeReturnTest() ✔
 └─ JUnit Vintage ✔
 
-Test run finished after 201 ms
+Test run finished after 200 ms
 [         9 containers found      ]
 [         0 containers skipped    ]
 [         9 containers started    ]
