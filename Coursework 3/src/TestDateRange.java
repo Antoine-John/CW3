@@ -4,7 +4,7 @@ import java.time.Month;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DateRangeTest {
+class TestDateRange {
     //Testing Overlap function in DateRange
     @Test
     void testOverLaps1() {

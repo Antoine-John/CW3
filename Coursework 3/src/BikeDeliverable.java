@@ -7,7 +7,6 @@ public class BikeDeliverable implements Deliverable{
 	Collection<Bike> bikes;
 	
 	public BikeDeliverable (Booking booking) {
-		
 		this.booking = booking;
 		
 		HashMap<String, Bike> bikes = new HashMap<String, Bike>();

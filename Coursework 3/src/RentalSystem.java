@@ -2,7 +2,7 @@ import java.security.Provider;
 import java.util.Collection;
 import java.util.HashMap;
 
-public interface System {
+public interface RentalSystem {
     //The system holds all the information on the bike providers, the bikes in the system
     //We will create some bikes and bike providers to be used in testing
 

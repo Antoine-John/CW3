@@ -21,7 +21,21 @@ public class Bike {
 		this.rentPeriods = new ArrayList<DateRange>();
 		this.status = status.AVAILABLE;
 	}
+
+	//Print bike information
+	public String toString() {
+		String returnString = "";
+		returnString += "\nBike Type: ";
+		returnString += this.type.type;
+		returnString += "\nModel: ";
+		returnString += model;
+		returnString += "\nProvider: ";
+		returnString += this.provider.name;
+
+		return returnString;
+	}
 	
+	//Getters/Setters
 	public BikeProvider getProvider() {
 		return this.provider;
 	}
@@ -40,12 +54,24 @@ public class Bike {
 
 	public BikeType getBikeType() { return this.type; }
 
+	public Status getStatus() {
+		return this.status;
+	}
+
 	public void setPrice (BigDecimal price) {
 		this.dailyRentalRate = price;
 	}
 
-	public boolean dateClashCheck(DateRange dateRange) {
-		
+	public void UpdateBikeStatus(Status newstatus) {
+		this.status = newstatus;
+	}
+
+	public void updateRentalPeriods(DateRange dateRange) {
+		rentPeriods.add(dateRange);
+	}
+
+	//Check if a bike is available in a certain DateRange
+	public boolean dateClashCheck(DateRange dateRange) {	
 		Iterator<DateRange> iter = rentPeriods.iterator();
 		while (iter.hasNext()) {
 			if (dateRange.overlaps(iter.next())) {
@@ -55,6 +81,7 @@ public class Bike {
 		return true;
 	}
 
+	//Returns true if current bike type is among list of wanted types
 	public boolean typeMatches(boolean[] types) {
 		int toCheck;
 		switch (type.type) {
@@ -73,25 +100,18 @@ public class Bike {
 		return types[toCheck];
 	}
 	
-	public void UpdateBikeStatus(Status newstatus) {
-		this.status = newstatus;
-	}
-
-	public void updateRentalPeriods(DateRange dateRange) {
-		rentPeriods.add(dateRange);
-	}
-
 	/*This function removes any rental periods that are not needed, either
 	* because the rental period has ended or the booking has been cancelled*/
 	public void removeRentalPeriods(DateRange dateRange) {
-		Iterator<DateRange> iter = rentPeriods.iterator();
-		while(iter.hasNext()) {
-			if (iter.equals(dateRange)) {
-				iter.remove();
-				break;
+		Iterator<DateRange> itr = rentPeriods.iterator();
+		while(itr.hasNext()) {
+			if (itr.next().equals(dateRange)) {
+				itr.remove();
 			}
 		}
 	}
+
+	//Need to only check type, size and provider when checking if any two bikes are the same
 	@Override
 	public boolean equals (Object o) {
 		if (this == o) {

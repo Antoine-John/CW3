@@ -9,7 +9,7 @@ public class MultiDayDiscountPolicy implements PricingPolicy {
 	public int[] days = {0}; //the days are the lower bound for each day interval
 	public float[] discount = {0};
 	
-	Logger logger = Logger.getLogger(MultiDayDiscountPolicy.class.getName());
+	private Logger logger = Logger.getLogger(MultiDayDiscountPolicy.class.getName());
 
 	public BigDecimal calculatePrice(Collection<Bike> bikes, DateRange date) {
 		Iterator<Bike> bikesItr = bikes.iterator(); //iterate through bike collection

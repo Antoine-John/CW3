@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class LocationTest {
+public class TestLocation {
 
     @Test
     void IsNearToTest() {
