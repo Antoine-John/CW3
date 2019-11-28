@@ -55,6 +55,9 @@ public class Bike {
 	public BigDecimal getDailyRentalRate() {
 		return this.dailyRentalRate;
 	}
+	public void setDailyRentalRate(BigDecimal dailyRentalRate) {
+		this.dailyRentalRate = dailyRentalRate;
+	}
 
 	public BikeType getBikeType() { return this.type; }
 

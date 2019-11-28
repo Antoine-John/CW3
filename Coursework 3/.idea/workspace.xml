@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="591bf2b7-e8a3-4652-926b-57bc8e6ab74a" name="Default Changelist" comment="" />
+    <list default="true" id="591bf2b7-e8a3-4652-926b-57bc8e6ab74a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/META-INF/BikeRental.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/Bike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/Bike.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/MockSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/MockSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/MultiDayDiscountPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/MultiDayDiscountPolicy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/PricingPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/ed/bikerental/PricingPolicy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/uk/ac/ed/bikerental/SystemTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/uk/ac/ed/bikerental/SystemTests.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,12 +24,17 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1UEEJMatBgv1tnIBVWvx5qTzO47" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -51,7 +65,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestBike" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestDateRange" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BikeRental" />
       <extension name="coverage">
         <pattern>
@@ -60,7 +74,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="uk.ac.ed.bikerental" />
-      <option name="MAIN_CLASS_NAME" value="uk.ac.ed.bikerental.TestBike" />
+      <option name="MAIN_CLASS_NAME" value="uk.ac.ed.bikerental.TestDateRange" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -114,10 +128,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.SystemTests" />
-        <item itemvalue="JUnit.TestMultiDayDiscountPolicy" />
-        <item itemvalue="JUnit.TestBike" />
         <item itemvalue="JUnit.TestQuote" />
+        <item itemvalue="JUnit.TestMultiDayDiscountPolicy" />
         <item itemvalue="JUnit.TestLocation" />
+        <item itemvalue="JUnit.TestDateRange" />
       </list>
     </recent_temporary>
   </component>
@@ -133,5 +147,16 @@
       <updated>1574913281902</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

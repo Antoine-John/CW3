@@ -38,8 +38,8 @@ public class MultiDayDiscountPolicy implements PricingPolicy {
 		return this.discount[idx];
 	}
 
-	public void setDailyRentalPrice(BikeType bikeType, BigDecimal price) {
-		
+	public void setDailyRentalPrice(Bike bike, BigDecimal price) {
+		bike.setDailyRentalRate(price);
 	}
 
 	public void setDaysDiscount(int[] days, float[] discount) {

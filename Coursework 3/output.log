@@ -1,0 +1,89 @@
+10
+Current Key: 1
+Current Key: 5
+Current Key: 6
+Booking:
+Customer: JohnDoe@yahoo.com
+Provider: Capone's Bikes For Rent
+All Quotes:
+-----------------------------------------
+Bike Type: Mountain
+Model: Mountain Mama
+Provider: Capone's Bikes For Rent
+Total Cost: 270
+-----------------------------------------
+
+-----------------------------------------
+Bike Type: Road
+Model: Li'l Road Warrior
+Provider: Capone's Bikes For Rent
+Total Cost: 315
+-----------------------------------------
+
+-----------------------------------------
+Bike Type: Mountain
+Model: HillBilly
+Provider: Capone's Bikes For Rent
+Total Cost: 270
+-----------------------------------------
+
+Collection Type: Customer Will Pick Up
+Date of Booking: 2019-11-28
+Booking State: PENDING
+Nov 28, 2019 1:38:50 PM uk.ac.ed.bikerental.BikeProvider registerReturnBooking
+WARNING: You are not authorised to update this booking.
+
+Thanks for using JUnit! Support its development at https://junit.org/sponsoring
+
+╷
+├─ JUnit Jupiter ✔
+│  ├─ TestBike ✔
+│  │  ├─ testEquals1() ✔
+│  │  ├─ testEquals2() ✔
+│  │  ├─ testEquals3() ✔
+│  │  └─ testEquals4() ✔
+│  ├─ TestDateRange ✔
+│  │  ├─ testToYears1() ✔
+│  │  ├─ testToYears3() ✔
+│  │  ├─ testGetDuration() ✔
+│  │  ├─ testOverLapsFalse() ✔
+│  │  ├─ testOverLapsTrue1() ✔
+│  │  ├─ testOverLapsTrue2() ✔
+│  │  └─ testExpand() ✔
+│  ├─ TestLocation ✔
+│  │  └─ IsNearToTest() ✔
+│  ├─ TestMultiDayDiscountPolicy ✔
+│  │  └─ calculatePriceTest() ✔
+│  ├─ TestQuote ✔
+│  │  └─ equalsTest() ✔
+│  ├─ TestCustomer ✔
+│  │  ├─ requestQuotesTest() ✔
+│  │  ├─ addQuoteToCartTest() ✔
+│  │  ├─ addQuoteToCartTest2() ✔
+│  │  └─ bookQuoteTest() ✔
+│  └─ SystemTests ✔
+│     ├─ requestQuotesTest() ✔
+│     ├─ addQuoteToCartTest() ✔
+│     ├─ addQuoteToCartTest2() ✔
+│     ├─ bookQuoteTest() ✔
+│     ├─ bookingCostTest() ✔
+│     ├─ newPartnerShipTest() ✔
+│     ├─ returnBikeToOriginalProviderPartnerTest() ✔
+│     ├─ returnBikeToOriginalProviderTest() ✔
+│     └─ invalidBikeReturnTest() ✔
+└─ JUnit Vintage ✔
+
+Test run finished after 201 ms
+[         9 containers found      ]
+[         0 containers skipped    ]
+[         9 containers started    ]
+[         0 containers aborted    ]
+[         9 containers successful ]
+[         0 containers failed     ]
+[        27 tests found           ]
+[         0 tests skipped         ]
+[        27 tests started         ]
+[         0 tests aborted         ]
+[        27 tests successful      ]
+[         0 tests failed          ]
+

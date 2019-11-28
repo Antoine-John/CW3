@@ -37,10 +37,13 @@ class SystemTests {
 
     @BeforeAll
     static void oneTimeSetUp() {
+
         //Sets up test environment with bike providers and bikes
         oProvider = new BikeProvider("Al's Bike Rental Shop", new Location("EH9 3BP", "53 Forresthill Avenue"), "password");
         pProvider = new BikeProvider("Capone's Bikes For Rent", new Location("EH10 2WM", "7 Roseburn Terrace"), "password");
         uProvider = new BikeProvider("Smitty's Decrepit Hut ", new Location("EH16 5AY", "18 Holyrood Park Road"), "password");
+
+        oProvider.system.reset();
 
         bike1 = new Bike(new BikeType(0), "Li'l Road Warrior", Size.XS, new BigDecimal(10), oProvider); //Id=0
         bike2 = new Bike(new BikeType(1), "Mountain Mama", Size.L, new BigDecimal(30), pProvider); //Id = 1...
@@ -58,8 +61,11 @@ class SystemTests {
                 "JohnDoe@yahoo.com",
                 new Location("EH8 4YU", "54 Brady Avenue"),
                 "Password");
+        //provider system state
+        oProvider.system.addProvider(oProvider);
+        oProvider.system.addProvider(pProvider);
+        oProvider.system.addCustomer(customer);
 
-        //customer system state
         oProvider.system.addBike(bike1);
         oProvider.system.addBike(bike2);
         oProvider.system.addBike(bike3);
@@ -71,16 +77,13 @@ class SystemTests {
         oProvider.system.addBike(bike9);
         oProvider.system.addBike(bike10);
 
-        oProvider.system.addProvider(oProvider);
-        oProvider.system.addProvider(pProvider);
-        oProvider.system.addCustomer(customer);
-
         DateRange dateRange2 = new DateRange(LocalDate.of(2019, Month.NOVEMBER, 1), LocalDate.of(2019, Month.NOVEMBER, 10));
         //Change rental period of bike 9 to check that it is not added
         bike9.updateRentalPeriods(dateRange2);
         oProvider.newPartnership(pProvider.getAddress());
         //ensure 'system' is shared between provider and customer
         customer.system = oProvider.system;
+        System.out.println(oProvider.system.getBikes().size());
     }
 
     @Test
@@ -98,6 +101,8 @@ class SystemTests {
         //Check that the return size of list of quotes is correct
         assertEquals(3, curr_search.size());
         for (Map.Entry<String, Quote> entry : curr_search.entrySet()) {
+            System.out.print("Current Key: ");
+            System.out.println(entry.getKey());
             keys.add(entry.getKey());
         }
         Iterator<String> iter = keys.iterator();

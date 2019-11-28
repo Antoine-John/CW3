@@ -72,4 +72,14 @@ public class MockSystem implements RentalSystem{
         Integer s = BookingIDCounter++;
         return s;
     }
+
+    //reset the mocksystem
+    public void reset() {
+        this.bikes.clear();
+        this.bookings.clear();
+        this.customers.clear();
+        this.providers.clear();
+        BikeIDCounter = 0;
+        BookingIDCounter = 0;
+    }
 }
